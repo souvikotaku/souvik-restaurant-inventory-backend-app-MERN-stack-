@@ -12,12 +12,18 @@ function App() {
   const[userdata,setUserdata] = useState([])
 
 
+  const authAxios = axios.create({
+    baseURL: "https://souvikbackendapp.herokuapp.com",
+    
+  });
+
+
   useEffect(()=>{
 
     async function fetchnow(){
 
 
-      axios.get("http://localhost:5001/products/").then((res) => {
+      authAxios.get("/products/").then((res) => {
         console.log(res.data);
         setUserdata(res.data);
       })
@@ -58,7 +64,7 @@ let modal = document.getElementById("myModal");
 
 
     if(window.confirm("are you sure you want to delete the message?")){
-      axios.delete("http://localhost:5001/products/" + id).then((res) => {
+      authAxios.delete("/products/" + id).then((res) => {
         // console.log(res.data);
         window.location.reload();
 
@@ -98,8 +104,8 @@ let modal = document.getElementById("myModal");
                           <td style={{border:'solid black 2px'}}>{eachdata.total_stock}</td>
                           <td style={{border:'solid black 2px'}}>
                             
-                            <a href={`http://localhost:5001/${eachdata.productImage}`} target='_blank'>
-                            <img class="piclink" src={`http://localhost:5001/${eachdata.productImage}`} style={{width:'80%',padding:'2px 2px'}}/>
+                            <a href={`${eachdata.productImage}`} target='_blank'>
+                            <img class="piclink" src={`${eachdata.productImage}` } style={{width:'80%',padding:'2px 2px'}}/>
                             </a>
                            
                           </td>
