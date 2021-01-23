@@ -63,7 +63,6 @@ box-shadow: 0px 0px 9px;
 
 .piclink:hover{
   background-color: red;
-  opacity: 50%;
 }
 
 @media (prefers-reduced-motion: no-preference) {
