@@ -18,6 +18,10 @@ function Addmodal(){
     const { register, handleSubmit, errors, watch } = useForm();
 
     
+    const authAxios = axios.create({
+      baseURL: "https://souvikbackendapp.herokuapp.com",
+      
+    });
   
   
     function closePanel() {
@@ -60,7 +64,7 @@ function Addmodal(){
    
 
 
-   axios.post("http://localhost:5001/products/add",formData).then((res) => {
+   authAxios.post("/products/add",formData).then((res) => {
     //  console.log(res);
 
 
