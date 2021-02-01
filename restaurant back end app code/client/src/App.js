@@ -3,82 +3,104 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Addmodal from "./components/Addmodal";
+import Updatemodal from "./components/Updatemodal";
+import Home from "./components/Home";
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+
 
 
 function App() {
 
 
-  const[userdata,setUserdata] = useState([])
+
+//   const[userdata,setUserdata] = useState([])
 
 
-  const authAxios = axios.create({
-    baseURL: "https://souvikbackendapp.herokuapp.com",
+//   const authAxios = axios.create({
+//     baseURL: "https://souvikbackendapp.herokuapp.com",
     
-  });
+//   });
 
 
-  useEffect(()=>{
+//   useEffect(()=>{
 
-    async function fetchnow(){
+//     async function fetchnow(){
 
+      
+//       authAxios.get("/products/").then((res) => {
+//         console.log(res.data);
+//         setUserdata(res.data);
 
-      authAxios.get("/products/").then((res) => {
-        console.log(res.data);
-        setUserdata(res.data);
-      })
+//       })
   
-      // const req = await axios.get(
-      //   "http://localhost:5000/exercises/"
-      // );
-    // console.log(req.data)
-      // setUsername(req.data[0].username);
-      // setDesc(req.data[0].description);
+//       // const req = await axios.get(
+//       //   "http://localhost:5000/exercises/"
+//       // );
+//     // console.log(req.data)
+//       // setUsername(req.data[0].username);
+//       // setDesc(req.data[0].description);
 
-    }
-    fetchnow();
-  },[])
+//     }
+//     fetchnow();
 
-
-function clickAdd(){
-  let paybox = document.querySelector(".tablediv");
-
-  paybox.style.display = "block";
-}
-
-let modal = document.getElementById("myModal");
-
-  window.onclick = function(event) {
-    if (event.target == modal) {
-      modal.style.display = "none";
-    }
-  }
+//   },[])
 
 
-  function deleteNow(id){
-    let deldata = {
-      id:id,
-    }
+// function clickAdd(){
+//   let paybox = document.querySelector(".tablediv");
 
-    console.log(deldata);
+//   paybox.style.display = "block";
+// }
+
+// let modal = document.getElementById("myModal");
+
+//   window.onclick = function(event) {
+//     if (event.target == modal) {
+//       modal.style.display = "none";
+//     }
+//   }
+
+//   let modal2 = document.getElementById("myModal2");
+
+//   window.onclick = function(event) {
+//     if (event.target == modal2) {
+//       modal2.style.display = "none";
+//     }
+//   }
 
 
-    if(window.confirm("are you sure you want to delete the message?")){
-      authAxios.delete("/products/" + id).then((res) => {
-        // console.log(res.data);
-        window.location.reload();
+//   function deleteNow(id){
+//     let deldata = {
+//       id:id,
+//     }
 
-      });
-    }
-  }
+//     console.log(deldata);
 
+
+//     if(window.confirm("are you sure you want to delete the message?")){
+//       authAxios.delete("/products/" + id).then((res) => {
+//         // console.log(res.data);
+//         window.location.reload();
+
+//       });
+//     }
+//   }
+
+  
 
   return (
-    <div class="mainBody" style={{display:'flex',justifyContent:'center',padding:'4%'}}>
+    <>
+    <Router>
+    {/* <div class="mainBody" style={{display:'flex',justifyContent:'center',padding:'4%'}}>
       <br/>
       <div class="tableBody" style={{width:'75%',padding:'15px 15px',borderRadius:'15px'}}>
         <div >
         <button onClick={clickAdd} className="btn btn-lg btn-success">Add+</button><span style={{fontSize:'40px',marginLeft:'26%'}}>Souvik's Eatery</span>
+
+        </div><br/>
+        <div >
+        <button  className="btn btn-lg btn-success"><Link to='/update'>Update+</Link></button>
 
         </div><br/>
 
@@ -95,6 +117,10 @@ let modal = document.getElementById("myModal");
                       </tr>
                     
                       {userdata.map((eachdata,index)=>(
+
+                      
+
+
                         <tr style={{border:'solid black 2px',textAlign:'center'}}>
                           <td style={{border:'solid black 2px'}}>{index+1}</td>
                           <td style={{border:'solid black 2px'}}>{eachdata.productName}</td>
@@ -116,9 +142,10 @@ let modal = document.getElementById("myModal");
                             style={{marginRight:'4%'}}
                             >Delete</button>
 
-                            <button className="btn btn-sm btn-info" >Edit</button>
+                            
                           </td>
                         </tr>
+                       
                       ))}
                      
       </table>
@@ -128,7 +155,13 @@ let modal = document.getElementById("myModal");
       <div id="myModal" class="modal tablediv" style={{display: 'none'}}>
       <Addmodal />
       </div>
-    </div>
+    </div> */}
+    <Switch>
+      <Route path='/' exact component={Home}/>
+      <Route path='/update' component={Updatemodal}/>
+    </Switch>
+    </Router>
+    </>
   );
 }
 
