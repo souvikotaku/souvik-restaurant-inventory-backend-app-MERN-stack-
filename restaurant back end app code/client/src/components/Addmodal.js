@@ -96,7 +96,7 @@ function Addmodal(){
  <form onSubmit={handleSubmit(onSubmit)} encType="multipart/form-data">
 
    
-        <h1>Products</h1><br/>
+        <h1>Add Product</h1><br/>
 <div>
          <label for="amount"> Product Name </label>
             <input  name="amountInput" type="text"  

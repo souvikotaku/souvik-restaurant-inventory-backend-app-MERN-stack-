@@ -93,15 +93,17 @@ function Updatemodal(){
 
     return(
       <div style={{display:'flex',justifyContent: 'center'}}>
-<div class="tablecon3 cool2" >
+<div class="tablecon5" >
 {/* <span class="close" onClick={closePanel}>&times;</span><br/><br/> */}
 
  <form onSubmit={handleSubmit(onSubmit)} encType="multipart/form-data">
 
-   
-        <h1>Products</h1><br/>
-<div>
-         <label for="amount"> Product Name </label>
+   <div style={{textAlign:'center',paddingTop:'2%'}}>
+   <h1 >Edit Product</h1><br/>
+
+   </div>
+<div style={{textAlign:'center'}}>
+         <label for="amount" > Product Name </label>
             <input  name="amountInput" type="text"  
             style={{marginLeft:'3%'}}
             required
@@ -118,10 +120,14 @@ function Updatemodal(){
 </div>
         
         <br/>
+        <div style={{textAlign:'center'}}>
         <label>Current VAT</label>
         <input
+          style={{marginLeft:'2%'}}
           value={Document_type || vat}
         />
+        </div>
+        
         <br/>
         <div style={{display:'flex',justifyContent:'center'}}>
         <label for="amount"> (optional) </label>
@@ -199,7 +205,7 @@ function Updatemodal(){
         
         <br/>
         <br/>
-        <div  >
+        <div  style={{textAlign:'center'}}>
             <button className="btn btn-success btn-md" type="submit" disabled={!change? 'none' : ''}>Update Product</button>
         </div>
         
